@@ -1,0 +1,5 @@
+.idea
+/vendor
+/system/cache
+/system/logs
+/system/data/*.mwb.bak

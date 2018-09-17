@@ -1,0 +1,22 @@
+<form action="/product/addToCart" method="post">
+    <h1>{{ product.name }}</h1>
+    <small>{{ product.description }}</small>
+    <br>
+    {{ product.price }}
+    <br>
+    <input type="text" name="name" value="{{ product.name }}" hidden>
+    <input type="text" name="description" value="{{ product.description }}" hidden>
+    <input type="text" name="price" value="{{ product.price }}" hidden>
+    <input type="text" name="quantity" value="{{ product.quantity }}" hidden>
+    <button type="submit" class="btn btn-primary">Add to cart</button>
+    <br>
+    <a href="/product/index">Go back</a>
+    <script>
+        $.ajax({
+            url: "/product/addToCart",
+            context: document.body
+        }).done(function() {
+            $( this ).addClass( "done" );
+        });
+    </script>
+</form>
