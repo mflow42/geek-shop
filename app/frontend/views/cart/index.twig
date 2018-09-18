@@ -9,18 +9,25 @@
         <th scope="col">Price</th>
         <th scope="col">Qty</th>
         <th scope="col">Total</th>
+        <th scope="col">Action</th>
     </tr>
     </thead>
 
     <tbody>
-    {% for item in cart %}
+    {% for product in cart %}
         <tr>
-            <th scope="row">{{ item.id }}</th>
-            <td>{{ item.name }}</td>
-            <td>{{ item.description }}</td>
-            <td>{{ item.price }}</td>
-            <td>{{ item.quantity }}</td>
-            <td>{{ item.price * item.quantity }}</td>
+            <th scope="row">{{ product.id }}</th>
+            <td>{{ product.name }}</td>
+            <td>{{ product.description }}</td>
+            <td>{{ product.price }}</td>
+            <td>{{ product.quantity }}</td>
+            <td>{{ product.price * product.quantity }}</td>
+            <td>
+                <form action="/cart/delete" method="post">
+                    <input type="text" name="id" value="{{ product.id }}" hidden>
+                    <input type="submit" value="delete">
+                </form>
+            </td>
         </tr>
     {% endfor %}
     </tbody>

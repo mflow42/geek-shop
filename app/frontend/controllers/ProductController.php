@@ -24,16 +24,4 @@ class ProductController extends Controller {
         );
     }
     
-    public function actionViewCart() {
-        $cart = $_SESSION['cart'];
-        return $this->render('cart', ['cart' => $cart,]
-        );
-    }
-    
-    public function actionAddToCart() {
-        $good = App::$current->request->post();
-        var_dump(App::$current->request->post());
-        $_SESSION['cart'][] = $good;
-    }
-    
 }

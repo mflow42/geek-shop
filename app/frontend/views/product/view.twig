@@ -1,22 +1,57 @@
-<form action="/product/addToCart" method="post">
+<form action="/cart/addToCart" method="post">
+{# <form id="addToCartForm" action="" method="post"> #}
     <h1>{{ product.name }}</h1>
     <small>{{ product.description }}</small>
     <br>
     {{ product.price }}
     <br>
+    <input type="text" name="id" value="{{ product.id }}" hidden>
     <input type="text" name="name" value="{{ product.name }}" hidden>
     <input type="text" name="description" value="{{ product.description }}" hidden>
     <input type="text" name="price" value="{{ product.price }}" hidden>
     <input type="text" name="quantity" value="{{ product.quantity }}" hidden>
     <button type="submit" class="btn btn-primary">Add to cart</button>
     <br>
-    <a href="/product/index">Go back</a>
+    <a href="/product">Go back</a>
     <script>
-        $.ajax({
-            url: "/product/addToCart",
-            context: document.body
-        }).done(function() {
-            $( this ).addClass( "done" );
-        });
+{#         
+        let cartForm = document.getElementById('addToCartForm');
+        cartForm.onsubmit(function() {
+                let product = {
+                id: cartForm.id.value,
+                name: cartForm.name.value,
+                description: cartForm.description.value,
+                price: cartForm.price.value,
+                quantity: cartForm.price.quantity,
+            }
+            let xhr = new XMLHttpRequest();
+            xhr.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    console.log(this);
+                }
+            };
+            xhr.open("POST", "/product/addToCart", true);
+            xhr.send(JSON.stringify(product));
+        })
+        console.log(cartForm); #}
+        
+        
+        {# $( "#addToCartForm" ).submit(function( event ) {
+            console.log(this);
+            // If .required's value's length is zero
+            if ($(".required").val().length === 0 ) {
+                    // Usually show some kind of error message here
+                    // Prevent the form from submitting
+                event.preventDefault();
+            } else {
+                $.ajax({
+                    url: "/product/addToCart",
+                    context: document.body
+                }).done(function(response) {
+                    console.log(response);
+                    $( this ).addClass( "done" );
+                });
+            }
+        }); #}
     </script>
 </form>
