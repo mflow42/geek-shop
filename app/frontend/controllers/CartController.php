@@ -12,6 +12,7 @@ class CartController extends Controller {
         if(!isset($_SESSION['cart'])){
             $_SESSION['cart'] = array();
         }
+//        array_pop($_SESSION['cart']);
         // s($_SESSION['cart']);
         // unset($_SESSION);
         // session_destroy();
@@ -31,6 +32,20 @@ class CartController extends Controller {
         App::$current->request->redirect(
             'product/view?id='.$product['id']
         );
+        // App::$current->request->goBack();
+    }
+    
+    public function actionAdd() {
+        if(!isset($_SESSION['cart'])){
+            $_SESSION['cart'] = array();
+        }
+        
+        $product = App::$current->request->post();
+        var_dump($product);
+//        $_SESSION['cart'][] = $product;
+//        App::$current->request->redirect(
+//            'product/view?id='.$product['id']
+//        );
         // App::$current->request->goBack();
     }
     

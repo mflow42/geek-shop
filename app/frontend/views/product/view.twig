@@ -1,65 +1,44 @@
-<form action="/cart/addToCart" method="post">
+{#<form action="/cart/addToCart" method="post">#}
 {# <form id="addToCartForm" action="" method="post"> #}
-    <h1>{{ product.name }}</h1>
-    <h5>Category: {{category.name}}</h5>
-    <hr>
-    
-    <img src="https://via.placeholder.com/300x200" alt="">
-    <img src="https://via.placeholder.com/300x200" alt="">
-    <img src="https://via.placeholder.com/300x200" alt="">
-    <hr>
-    Price: ${{ product.price }} <button type="submit" class="btn btn-sm btn-primary">Add to cart</button>
-    <hr>
-    <small>Description: {{ product.description }} Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque, quis? Temporibus delectus quaerat, facere saepe itaque voluptate quas consectetur. Cum consequuntur quibusdam maxime adipisci obcaecati, nulla ab temporibus quos illo. Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quaerat quia doloribus velit labore sint recusandae, culpa molestiae, at tempora quos provident adipisci soluta ipsum vel earum iure rerum esse facilis.</small>
-    <br>
-    <br>
-    <input type="text" name="id" value="{{ product.id }}" hidden>
-    <input type="text" name="name" value="{{ product.name }}" hidden>
-    <input type="text" name="description" value="{{ product.description }}" hidden>
-    <input type="text" name="price" value="{{ product.price }}" hidden>
-    <input type="text" name="quantity" value="{{ product.quantity }}" hidden>
-    
-    <hr>
-    <a href="/product">Go back</a>
-    <script>
-{#         
-        let cartForm = document.getElementById('addToCartForm');
-        cartForm.onsubmit(function() {
-                let product = {
-                id: cartForm.id.value,
-                name: cartForm.name.value,
-                description: cartForm.description.value,
-                price: cartForm.price.value,
-                quantity: cartForm.price.quantity,
-            }
-            let xhr = new XMLHttpRequest();
-            xhr.onreadystatechange = function() {
-                if (this.readyState == 4 && this.status == 200) {
-                    console.log(this);
-                }
-            };
-            xhr.open("POST", "/product/addToCart", true);
-            xhr.send(JSON.stringify(product));
-        })
-        console.log(cartForm); #}
-        
-        
-        {# $( "#addToCartForm" ).submit(function( event ) {
-            console.log(this);
-            // If .required's value's length is zero
-            if ($(".required").val().length === 0 ) {
-                    // Usually show some kind of error message here
-                    // Prevent the form from submitting
-                event.preventDefault();
-            } else {
-                $.ajax({
-                    url: "/product/addToCart",
-                    context: document.body
-                }).done(function(response) {
-                    console.log(response);
-                    $( this ).addClass( "done" );
-                });
-            }
-        }); #}
-    </script>
-</form>
+<input type="text" data-id="{{ product.id }}" hidden>
+<h1 data-name="{{ product.name }}">{{ product.name }}</h1>
+<h5 data-category="{{ category.name }}">Category: {{ category.name }}</h5>
+<hr>
+
+<img src="https://via.placeholder.com/300x200" alt="">
+<img src="https://via.placeholder.com/300x200" alt="">
+<img src="https://via.placeholder.com/300x200" alt="">
+<hr>
+<div class="form-row">
+    <div class="form-group col-md-2">
+        <p data-price="{{ product.price }}">Price: ${{ product.price }}</p>
+    </div>
+</div>
+<div class="form-row">
+    <div class="form-group col-md-1">
+        <input type="text" class="form-control form-control-sm" placeholder="Quantity"
+               data-quantity="{{ product.quantity }}" value="{{ product.quantity }}">
+    </div>
+    <div class="form-group col-md-2">
+        <button id="btnAddToCart" type="submit" class="btn btn-sm btn-primary">Add to cart</button>
+    </div>
+</div>
+<hr>
+<small data-description="{{ product.description }}">Description: {{ product.description }} Lorem ipsum dolor sit amet
+    consectetur adipisicing elit. Atque, quis?
+    Temporibus delectus quaerat, facere saepe itaque voluptate quas consectetur. Cum consequuntur quibusdam maxime
+    adipisci obcaecati, nulla ab temporibus quos illo. Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quaerat
+    quia doloribus velit labore sint recusandae, culpa molestiae, at tempora quos provident adipisci soluta ipsum vel
+    earum iure rerum esse facilis.
+</small>
+<br>
+<br>
+{#<input type="text" name="id" value="{{ product.id }}" hidden>#}
+{#<input type="text" name="name" value="{{ product.name }}" hidden>#}
+{#<input type="text" name="description" value="{{ product.description }}" hidden>#}
+{#<input type="text" name="price" value="{{ product.price }}" hidden>#}
+{#<input type="text" name="quantity" value="{{ product.quantity }}" hidden>#}
+
+<hr>
+<a href="/product">Go back</a>
+{#</form>#}
