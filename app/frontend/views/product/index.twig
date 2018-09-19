@@ -1,9 +1,9 @@
-<h1>Catalogue</h1>
-
+<h1>Products</h1>
+<hr />
 <div class="card-deck">
     {% for product in products %}
         <div class="card">
-            <img class="card-img-top" src="..." alt="Card image cap">
+            <a href="/product/view?id={{ product.id }}"><img class="card-img-top" src="https://via.placeholder.com/300x200" alt="Card image cap"></a>
             <div class="card-body">
                 <h5 class="card-title">{{ product.name }} </h5>
                 <small>${{ product.price }}</small>

@@ -1,17 +1,25 @@
 <form action="/cart/addToCart" method="post">
 {# <form id="addToCartForm" action="" method="post"> #}
     <h1>{{ product.name }}</h1>
-    <small>{{ product.description }}</small>
+    <h5>Category: {{category.name}}</h5>
+    <hr>
+    
+    <img src="https://via.placeholder.com/300x200" alt="">
+    <img src="https://via.placeholder.com/300x200" alt="">
+    <img src="https://via.placeholder.com/300x200" alt="">
+    <hr>
+    Price: ${{ product.price }} <button type="submit" class="btn btn-sm btn-primary">Add to cart</button>
+    <hr>
+    <small>Description: {{ product.description }} Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque, quis? Temporibus delectus quaerat, facere saepe itaque voluptate quas consectetur. Cum consequuntur quibusdam maxime adipisci obcaecati, nulla ab temporibus quos illo. Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quaerat quia doloribus velit labore sint recusandae, culpa molestiae, at tempora quos provident adipisci soluta ipsum vel earum iure rerum esse facilis.</small>
     <br>
-    {{ product.price }}
     <br>
     <input type="text" name="id" value="{{ product.id }}" hidden>
     <input type="text" name="name" value="{{ product.name }}" hidden>
     <input type="text" name="description" value="{{ product.description }}" hidden>
     <input type="text" name="price" value="{{ product.price }}" hidden>
     <input type="text" name="quantity" value="{{ product.quantity }}" hidden>
-    <button type="submit" class="btn btn-primary">Add to cart</button>
-    <br>
+    
+    <hr>
     <a href="/product">Go back</a>
     <script>
 {#         

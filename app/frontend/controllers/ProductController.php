@@ -3,25 +3,35 @@
 
 namespace app\frontend\controllers;
 
-use app\common\models\Shop_product;
-use system\components\App;
+use app\common\models\Product;
+use app\common\models\Category;
 use system\components\Controller;
 
 class ProductController extends Controller {
     
     public function actionIndex() {
-        $products = Shop_product::findAll();
+        $products = Product::findAll();
         
-        return $this->render('index', ['products' => $products,]
-        );
+        return $this->render('index', [
+            'products' => $products,
+        ]);
     }
     
     // SQL Injection
     public function actionView($id) {
-        $product = Shop_product::findById($id);
+        $product = Product::findById($id);
+        //magic
+        //$product->category->name = 'Updated';
+        //$product->category->save();
         
-        $this->render('view', ['product' => $product,]
-        );
+        $category = Category::findOne([
+            'id' => $product->shop_category_id
+        ]);
+        
+        $this->render('view', [
+            'product' => $product,
+            'category' => $product ->getCategory(),
+        ]);
     }
     
 }

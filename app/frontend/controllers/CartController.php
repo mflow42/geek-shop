@@ -12,6 +12,7 @@ class CartController extends Controller {
         if(!isset($_SESSION['cart'])){
             $_SESSION['cart'] = array();
         }
+        // s($_SESSION['cart']);
         // unset($_SESSION);
         // session_destroy();
         // $_SESSION['cart'] = null;
@@ -35,11 +36,9 @@ class CartController extends Controller {
     
     public function actionDelete() {
         $product = App::$current->request->post();
-        var_dump($_SESSION['cart']);
-        // unset($_SESSION['cart'][$product['id']]);
-        // App::$current->request->redirect(
-            // 'cart/index'
-        // );
-        // App::$current->request->goBack();
+        
+        App::$current->request->redirect(
+            '/cart'
+        );
     }
 }
