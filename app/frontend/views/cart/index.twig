@@ -1,21 +1,28 @@
-<h1>Cart</h1>
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <h1>Cart</h1>
+    </div>
+  </div>
 
-<table class="table">
-    <thead>
-    <tr>
-        <th scope="col">#</th>
-        <th scope="col">Name</th>
-        <th scope="col">Description</th>
-        <th scope="col">Price</th>
-        <th scope="col">Qty</th>
-        <th scope="col">Total</th>
-        <th scope="col">Action</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    {% for product in cart %}
+  <div class="row">
+    <div class="col">
+      <table class="table">
+        <thead>
         <tr>
+          <th scope="col-1">#</th>
+          <th scope="col-1">Name</th>
+          <th scope="col-1">Description</th>
+          <th scope="col-1">Price</th>
+          <th scope="col-1">Qty</th>
+          <th scope="col-1">Total</th>
+          <th scope="col-1">Action</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        {% for product in cart %}
+          <tr>
             <th scope="row">{{ product.id }}</th>
             <td>{{ product.name }}</td>
             <td>{{ product.description }}</td>
@@ -23,12 +30,22 @@
             <td>{{ product.quantity }}</td>
             <td>{{ product.price * product.quantity }}</td>
             <td>
-                <form action="/cart/delete" method="post">
-                    <input type="text" name="id" value="{{ product.id }}" hidden>
-                    <input type="submit" value="delete">
-                </form>
+              <div class="form-row">
+                <div class="form-group col">
+                  <button id="btnAddToCart" type="submit" class="btn btn-sm btn-danger">delete</button>
+                </div>
+              </div>
+              <form action="/cart/delete" method="post">
+                <input type="text" name="id" value="{{ product.id }}" hidden>
+                <input type="submit" value="delete">
+              </form>
             </td>
-        </tr>
-    {% endfor %}
-    </tbody>
-</table>
+          </tr>
+        {% endfor %}
+        </tbody>
+      </table>
+      <button type="button" class="btn btn-dark btn-block">Оформить заказ</button>
+    </div>
+  </div>
+
+</div>

@@ -14,27 +14,40 @@ function loadItem() {
 }
 
 let button = $('#btnAddToCart').bind('click', addToCart);
+let button = $('#btnAddToCart').bind('click', addToCart);
 
 
 function addToCart() {
-  let html = $('[data-id], [data-name], [data-product], [data-category], [data-description], [data-price], [data-quantity]');
-  let productData = html.map((i, item) => $(item).data());
-  let productObject = {};
-  productData.map((i, item) => Object.assign(productObject, item));
-  
-  
   let id = $('[data-id]').data('id');
-  // console.log(find);
-  // $.post('/cart/add', {product: productObject})
-  //         .done(function (response) {
-  //           console.log(response);
-  //         });
+  let quantity = $('[data-quantity]')[0].value;
+  let price = $('[data-price]').data('price');
+  let name = $('[data-name]').data('name');
+  let description = $('[data-description]').data('description');
+  let category = $('[data-category]').data('category');
   
-  $.post('/cart/add', {id: id})
-    .done(function (response) {
-      alert('Product has been added to cart succesfully!');
-      console.log(response);
+  $('.alert').show();
+  
+  $('.close').bind('click', function() {
+    $('.alert').hide();
+  });
+  
+  setTimeout(function () {
+    $('.alert').hide();
+  }, 500);
+  
+  $.post('/cart/add', {
+    id: id,
+    quantity: quantity,
+    price: price,
+    name: name,
+    description: description,
+    category: category,
   })
+          .done(function (response) {
+            // alert('Product has been added to cart successfully!');
+            console.log(response);
+          })
   
 }
+
 
