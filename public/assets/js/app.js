@@ -22,9 +22,19 @@ function addToCart() {
   let productObject = {};
   productData.map((i, item) => Object.assign(productObject, item));
   
-  $.post('/cart/add', {product: productObject})
-          .done(function (response) {
-            console.log(response);
-          });
+  
+  let id = $('[data-id]').data('id');
+  // console.log(find);
+  // $.post('/cart/add', {product: productObject})
+  //         .done(function (response) {
+  //           console.log(response);
+  //         });
+  
+  $.post('/cart/add', {id: id})
+    .done(function (response) {
+      alert('Product has been added to cart succesfully!');
+      console.log(response);
+  })
+  
 }
 
