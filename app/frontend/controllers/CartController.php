@@ -14,6 +14,7 @@ class CartController extends Controller {
     if (!isset($_SESSION['cart'])) {
       $_SESSION['cart'] = array();
     }
+    // s($_SESSION);
     $cart = $_SESSION['cart'];
     return $this->render('index',
             ['cart' => $cart]
@@ -42,7 +43,7 @@ class CartController extends Controller {
   
   public function actionDelete() {
     $product = App::$current->request->post();
-    
+    var_dump($product);
     foreach ($_SESSION['cart'] as $key => $value) {
       if(array_search($product['id'], $value)) {
         if (!!(array_search($product['id'], $value))) {

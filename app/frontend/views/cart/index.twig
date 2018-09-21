@@ -23,7 +23,7 @@
         <tbody>
         {% for product in cart %}
           <tr>
-            <th scope="row">{{ product.id }}</th>
+            <th data-id="{{ product.id }}" scope="row">{{ product.id }}</th>
             <td>{{ product.name }}</td>
             <td>{{ product.description }}</td>
             <td>{{ product.price }}</td>
@@ -32,18 +32,29 @@
             <td>
               <div class="form-row">
                 <div class="form-group col">
-                  <button id="btnAddToCart" type="submit" class="btn btn-sm btn-danger">delete</button>
+                  <button class="btn btn-sm btn-danger btnDeleteFromCart" type="submit" class="btn btn-sm btn-danger">delete</button>
                 </div>
               </div>
-              <form action="/cart/delete" method="post">
+              
+              
+              {# <form action="/cart/delete" method="post">
                 <input type="text" name="id" value="{{ product.id }}" hidden>
                 <input type="submit" value="delete">
-              </form>
+              </form> #}
             </td>
           </tr>
+          
         {% endfor %}
+        
         </tbody>
+        
       </table>
+      <div class="alert alert-warning alert-dismissible fade show delete" role="alert">
+                Product has been deleted!
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
       <button type="button" class="btn btn-dark btn-block">Оформить заказ</button>
     </div>
   </div>
